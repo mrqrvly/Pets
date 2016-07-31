@@ -50,4 +50,6 @@ class UsersController < ApplicationController
     #
     # Password - bcrypt goes here.
     #
+  end
+  
 end
