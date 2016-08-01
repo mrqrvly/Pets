@@ -9,10 +9,9 @@ ActiveRecord::Base.establish_connection(
 
 require './app/models/user'
 require './app/controllers/application_controller'
-require './app/controllers/home_controller'
 require './app/controllers/users_controller'
 require './app/controllers/pets_controller'
 
-map('/')      { run HomeController }
-map('/users') { run UsersController }
+
+map('/') { run UsersController }
 map('/pets')  { run PetsController }
