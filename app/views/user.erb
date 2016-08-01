@@ -2,11 +2,27 @@
 
 <h2>Seach for your new biddy baby smoodgie pet friend:</h2>
 <form action="/pets/" method="get">
-  <input type="text" name="type" value="" placeholder="animal type" />
-  <input type="text" name="breed" value="" placeholder="breed" />
-  <input type="text" name="location" value="" placeholder="zip code" />
+  <label>What type of googie are you looking for?</label>
+  <select name="type">
+    <option selected="selected">All pets</option>
+    <option>Dogs</option>
+    <option>Cats</option>
+    <option>Rabbits</option>
+    <option>Small Creatures</option>
+    <option>Horses</option>
+    <option>Birds</option>
+    <option>Fish & Amphibians</option>
+    <option>Pigs</option>
+    <option>Barnyard</option>
+  </select>
+  <label>What breed do you need?</label>
+  <select id="breed">
+    <option>Please select an animal type</option>
+  </select>
+  <label>Where are you looking?</label>
+  <input type="text" name="location" placeholder="zip code" />
   <button>Search!</button>
 </form>
 
-<h3>Check on your potential beeby boodgies:</h3>
+<h2>Check on your potential beeby boodgies:</h2>
 
