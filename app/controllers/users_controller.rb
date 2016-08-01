@@ -43,11 +43,11 @@ class UsersController < ApplicationController
 
 
   get '/profile/?' do
-    # if session[:is_logged_in?] = true
+    if session[:is_logged_in] = true
       erb :user
-    # else
-    #   redirect '/'
-    # end
+    else
+      redirect '/'
+    end
   end
 
 
@@ -61,12 +61,13 @@ class UsersController < ApplicationController
       erb :home
     elsif user
       password = BCrypt::Password.new(user.password)
-      if password == params['password']
-        # session[:is_logged_in?] = true
-        # session[:user_id] = params[:user_id]
+      if password == params['password'] 
+        session[:is_logged_in] = true
+        session[:user_id] = user.id
+        puts session.id
         redirect '/profile'
       else
-        @log_message = "Incorrect Password"
+        @log_message = "Incorrect password"
         erb :home
       end
     end
