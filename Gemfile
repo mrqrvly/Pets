@@ -12,7 +12,7 @@ gem 'bundler'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'bcrypt'
 gem 'json'
-
+gem 'pry'
 group :development do
   gem 'rerun'
   gem 'sqlite3'
