@@ -1,5 +1,5 @@
 # Require Rake Tasks
-require 'sinatra/activerecord/rake'
+require "sinatra/activerecord/rake"
 
 # Connect to the Database
 ActiveRecord::Base.establish_connection(
