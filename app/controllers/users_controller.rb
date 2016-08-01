@@ -5,8 +5,8 @@ class UsersController < ApplicationController
     user = User.find id
 
     if user
-      erb :user
-      # user.to_json
+      # erb :user
+      user.to_json
     else
       { status: 'error', message: 'No user with that ID' }.to_json
     end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET - /users/
+   # GET - /users/
   get '/?' do
     users = User.all
 
@@ -45,11 +45,4 @@ class UsersController < ApplicationController
       { status: 'error', message: 'No users found' }.to_json
     end
   end
-
-  post '/?' do
-    #
-    # Password - bcrypt goes here.
-    #
-  end
-  
 end
