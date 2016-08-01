@@ -3,6 +3,6 @@
 
 class PetsController < ApplicationController
   get '/?' do
-    erb :results
+    erb :pet
   end
 end
