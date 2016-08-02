@@ -21,6 +21,25 @@
     <div class="result"></div>
 
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+      var animal = '<%= @animal %>';
+      var breed  = '<%= @breed %>';
+      var zip    = '<%= @zip %>';
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="/js/petapi.js"></script>
 
@@ -69,8 +88,8 @@
       function callback(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
-            console.log('this is the places results')
-            console.log(results[i])
+            // console.log('this is the places results')
+            // console.log(results[i])
             createMarker(results[i]);
           }
         }
@@ -78,7 +97,7 @@
 
       function createMarker(place) {
         var placeLoc = place.geometry.location;
-        console.log(placeLoc)
+        // console.log(placeLoc)
         var marker = new google.maps.Marker({
           map: map,
           position: place.geometry.location

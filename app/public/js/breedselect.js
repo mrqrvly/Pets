@@ -8,31 +8,31 @@ $("#animal-select").change(function() {
     var vals = [];
 
     switch(key) {
-      case "Dogs":
+      case "dog":
         vals = data.dogs.split(",");
         break;
-      case "Cats":
+      case "cat":
         vals = data.cats.split(",");
         break;
-      case "Rabbits":
+      case "rabbit":
         vals = data.rabbits.split(",");
         break;
-      case "Small Creatures":
+      case "smallfurry":
         vals = data.small.split(",");
         break;
-      case "Horses":
+      case "horse":
         vals = data.horses.split(",");
         break;
-      case "Birds":
+      case "bird":
         vals = data.birds.split(",");
         break;
-      case "Fish, Reptiles & Amphibians":
+      case "reptile":
         vals = data.other.split(",");
         break;
-      case "Pigs":
+      case "pig":
         vals = data.pigs.split(",");
         break;
-      case "Barnyard":
+      case "barnyard":
         vals = data.barnyard.split(",");
         break;
       // case "base":

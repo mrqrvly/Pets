@@ -1,26 +1,26 @@
 <h1>Welcome</h1>
 
 <h2>Seach for your new biddy baby smoodgie pet friend:</h2>
-<form action="/pets/results" method="get">
+<form action="/pets" method="post">
   <label>What type of googie are you looking for?</label>
-  <select name="type" id="animal-select">
-    <option selected="selected">All pets</option>
-    <option>Dogs</option>
-    <option>Cats</option>
-    <option>Rabbits</option>
-    <option>Small Creatures</option>
-    <option>Horses</option>
-    <option>Birds</option>
-    <option>Fish, Reptiles & Amphibians</option>
-    <option>Pigs</option>
-    <option>Barnyard</option>
+  <select name="animal" id="animal-select">
+    <option value="" selected="selected">All pets</option>
+    <option value="dog">Dogs</option>
+    <option value="cat">Cats</option>
+    <option value="rabbit">Rabbits</option>
+    <option value="smallfurry">Small Creatures</option>
+    <option value="horse">Horses</option>
+    <option value="bird">Birds</option>
+    <option value="reptile">Fish, Reptiles & Amphibians</option>
+    <option value="pig">Pigs</option>
+    <option value="barnyard">Barnyard</option>
   </select>
   <label>What breed do you need?</label>
-  <select id="breed-select">
-    <option>Please select an animal type</option>
+  <select name="breed" id="breed-select">
+    <option value="">Please select an animal type</option>
   </select>
   <label>Where are you looking?</label>
-  <input type="text" name="location" placeholder="zip code" />
+  <input value="" type="text" name="zip" placeholder="zip code" />
   <button>Search!</button>
 </form>
 

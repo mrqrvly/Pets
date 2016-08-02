@@ -7,11 +7,18 @@ class PetsController < ApplicationController
     erb :pet
   end
 
-  post '/?' do
+  get '/?' do
    
   end
 
-  get '/' do
+  post '/?' do
+    @animal = params[:animal]
+    @breed  = params[:breed]
+    @zip    = params[:zip]
+    
+    def index
+      @pets
+
     erb :results
   end
 
