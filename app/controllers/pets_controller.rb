@@ -4,15 +4,17 @@
 class PetsController < ApplicationController
 
   get '/petprofile/?' do
-    erb :pet
+    
+  end
+
+  get '/?' do
+    # erb :results
   end
 
   post '/?' do
-   
-  end
-
-  get '/' do
-    erb :results
+    @animal = params[:animal]
+    @breed  = params[:breed]
+    @zip    = params[:zip]
   end
 
 end
