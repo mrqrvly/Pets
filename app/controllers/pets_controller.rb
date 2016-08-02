@@ -12,6 +12,8 @@ class PetsController < ApplicationController
   end
 
 
-
+ get '/results/?' do
+  erb :results
+end
 
 end
