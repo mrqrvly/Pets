@@ -20,81 +20,10 @@
     <div id="map"></div>
     <div class="result"></div>
 
-    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntNQvZ1AMlJwJDnwycxyLWJcJvZUmCfk&libraries=places&libraries=geometry"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="/js/petapi.js"></script>
-
-
-    <script>
-      // var address = ['4252 N Clark St, Chicago, IL, 60613', '91311', '6279 N Paulina Chicago IL 60660']
-      var map;
-      var infowindow;
-      // var geocoder = new google.maps.Geocoder;
-      
-      var centerlat= 41.9578;
-      var centerlng = -87.6556;
-
-
-      function initMap() {
-        
-      //   function loopZip() {
-      //   for (var i = 0; i < address.length; i++) {
-      //      // console.log(address[i]) 
-      //     geocoder.geocode({'address': address[i]}, function(results, status) {
-      //       // console.log('geocoded results[0] & place_id')
-      //     console.log(results[0].geometry.location)
-      //       // console.log(results[0].place_id)
-          
-      //     });
-      //     return results[0].geometry.location.lat
-      //   }
-      // }
-      // loopZip()
-
-        var pyrmont = {lat: centerlat, lng: centerlng};  // THIS WILL BE THE ZIP CODE ENTERED BY USER
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: pyrmont,
-          zoom: 15
-        });
-
-        infowindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
-        service.nearbySearch({
-          location: pyrmont,
-          radius: 9000,
-          type: ['place_id']
-        }, callback);
-      }
-
-      function callback(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
-            console.log('this is the places results')
-            console.log(results[i])
-            createMarker(results[i]);
-          }
-        }
-      }
-
-      function createMarker(place) {
-        var placeLoc = place.geometry.location;
-        console.log(placeLoc)
-        var marker = new google.maps.Marker({
-          map: map,
-          position: place.geometry.location
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name);
-          infowindow.open(map, this);
-        });
-      }
-
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntNQvZ1AMlJwJDnwycxyLWJcJvZUmCfk&libraries=places&callback=initMap">
-    </script>
-<!--     // <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntNQvZ1AMlJwJDnwycxyLWJcJvZUmCfk&libraries=places"></script> -->
+    <script src="/js/mapsearch.js"></script>
   </body>
 </html>
 
