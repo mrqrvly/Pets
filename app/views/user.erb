@@ -3,7 +3,7 @@
 <h2>Seach for your new biddy baby smoodgie pet friend:</h2>
 <form action="/pets/" method="get">
   <label>What type of googie are you looking for?</label>
-  <select name="type">
+  <select name="type" id="animal-select">
     <option selected="selected">All pets</option>
     <option>Dogs</option>
     <option>Cats</option>
@@ -11,12 +11,12 @@
     <option>Small Creatures</option>
     <option>Horses</option>
     <option>Birds</option>
-    <option>Fish & Amphibians</option>
+    <option>Fish, Reptiles & Amphibians</option>
     <option>Pigs</option>
     <option>Barnyard</option>
   </select>
   <label>What breed do you need?</label>
-  <select id="breed">
+  <select id="breed-select">
     <option>Please select an animal type</option>
   </select>
   <label>Where are you looking?</label>
@@ -37,3 +37,6 @@
     </div>
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="/js/breedselect.js"></script>

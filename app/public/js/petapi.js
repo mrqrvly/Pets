@@ -8,7 +8,7 @@ $.ajax({
   data: {
     key:    "61635e39395ce71e4d0eba82c79adb55",
     format: "json",
-    animal: "dog",  
+    animal: "reptile",  
     output: "full"
   },
   dataType: 'jsonp',
