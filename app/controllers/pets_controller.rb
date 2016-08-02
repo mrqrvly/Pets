@@ -3,7 +3,7 @@
 
 class PetsController < ApplicationController
 
-  get '/?' do
+  get '/petprofile/?' do
     erb :pet
   end
 
@@ -12,8 +12,8 @@ class PetsController < ApplicationController
   end
 
 
- get '/results/?' do
-  erb :results
-end
+  get '/' do
+    erb :results
+  end
 
 end

@@ -1,18 +1,8 @@
 class UsersController < ApplicationController
 
 
-# get '/logout/?'
-#   session[:is_logged_in] = false
-#   session[:user_id] = nil
-#   erb :home
-# end
-
-
-
-
-
    # GET - /users/
-  get '/allusers?' do
+  get '/allusers/?' do
     users = User.all
 
     if users
@@ -23,7 +13,17 @@ class UsersController < ApplicationController
   end
 
 
-  post '/signup?' do
+  get '/profile/?' do
+    if session[:is_logged_in] == true
+      puts session.id
+      erb :user
+    else
+      redirect '/'
+    end
+  end
+
+
+  post '/signup/?' do
     # Creates a new user
     user = User.find_by username: params['username']
 
@@ -42,16 +42,17 @@ class UsersController < ApplicationController
 
 
 
-  get '/profile/?' do
-    if session[:is_logged_in] = true
-      erb :user
-    else
-      redirect '/'
-    end
+
+  get '/logout/?' do
+    session =  nil
+    puts "-----------"
+    redirect '/'
   end
 
 
-  post '/login?' do
+
+
+  post '/login/?' do
     user = User.find_by username: params['username']
     if (params['username'] == '') || (params['password'] == '')
       @log_message = "Please complete all fields"
@@ -64,7 +65,10 @@ class UsersController < ApplicationController
       if password == params['password'] 
         session[:is_logged_in] = true
         session[:user_id] = user.id
+        puts ' ------------------------- '
         puts session.id
+        puts ' ------------------------- '
+        puts session[:user_id]
         redirect '/profile'
       else
         @log_message = "Incorrect password"
@@ -74,28 +78,10 @@ class UsersController < ApplicationController
   end
 
 
+
   get '/?' do
     erb :home
   end
 
 
 end
-
-
-
-
-
-
-
-
-
-
-
-#   # # PATCH - /users/:id
-#   # patch '/:id/?' do |id|
-#   #   user = User.find id
-
-#   #   user.update username: params['username'] || user.username, password: params['email'] || user.password, firstname: params['firstname'] || user.firstname, lastname: params['lastname'] || user.lastname
-
-#   #   { status: 'ok', message: 'user updated' }.to_json 
-#   # end
