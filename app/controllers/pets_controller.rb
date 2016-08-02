@@ -11,7 +11,6 @@ class PetsController < ApplicationController
    
   end
 
-
   get '/' do
     erb :results
   end
