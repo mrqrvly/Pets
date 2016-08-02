@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,25 +15,10 @@
       }
     </style>
   </head>
+
   <body>
     <div id="map"></div>
     <div class="result"></div>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script>
       var animal = '<%= @animal %>';
       var breed  = '<%= @breed %>';
@@ -42,8 +26,6 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="/js/petapi.js"></script>
-
-
     <script>
       // var address = ['4252 N Clark St, Chicago, IL, 60613', '91311', '6279 N Paulina Chicago IL 60660']
       var map;
@@ -102,13 +84,11 @@
           map: map,
           position: place.geometry.location
         });
-
         google.maps.event.addListener(marker, 'click', function() {
           infowindow.setContent(place.name);
           infowindow.open(map, this);
         });
       }
-
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntNQvZ1AMlJwJDnwycxyLWJcJvZUmCfk&libraries=places&callback=initMap">
