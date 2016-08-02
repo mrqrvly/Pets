@@ -20,5 +20,8 @@ $.ajax({
     //   breeds.push(result.petfinder.breeds.breed[index].$t);
     // }
     // console.log(JSON.stringify(breeds.join()));
+  },
+  error: function(err){
+    console.log(err)
   }
 });

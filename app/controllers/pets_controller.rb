@@ -15,6 +15,7 @@ class PetsController < ApplicationController
     @animal = params[:animal]
     @breed  = params[:breed]
     @zip    = params[:zip]
+    erb :results
   end
 
 end
