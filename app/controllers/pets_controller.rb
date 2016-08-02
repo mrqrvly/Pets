@@ -4,11 +4,11 @@
 class PetsController < ApplicationController
 
   get '/petprofile/?' do
-    erb :pet
+    
   end
 
   get '/?' do
-   
+    # erb :results
   end
 
   post '/?' do
