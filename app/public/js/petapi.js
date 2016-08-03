@@ -1,6 +1,10 @@
-console.log('We have javascript!');
-var breeds = []
+//  SEARCH THE PETFINDER.COM API FOR PET INFO
+//  =========================================
 
+
+//  Variables for API request are imported from
+//  the request.erb view (animal, breed, zip)
+//  -------------------------------------------
 $.ajax({
   url:'http://api.petfinder.com/pet.find',
   type: 'GET',
@@ -20,5 +24,8 @@ $.ajax({
     //   breeds.push(result.petfinder.breeds.breed[index].$t);
     // }
     // console.log(JSON.stringify(breeds.join()));
+  },
+  error: function(err){
+    console.log(err);
   }
 });

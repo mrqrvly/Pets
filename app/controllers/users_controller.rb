@@ -1,7 +1,10 @@
+#  USERS CONTROLLER
+#  ================
+
 class UsersController < ApplicationController
 
-
-   # GET - /users/
+  #  GET - /users/ - access JSON of all registered users
+  #  ---------------------------------------------------
   get '/allusers/?' do
     users = User.all
 
@@ -12,7 +15,8 @@ class UsersController < ApplicationController
     end
   end
 
-
+  #  GET - /users/profile/ - goes to profile page if logged in
+  #  ---------------------------------------------------------
   get '/profile/?' do
     if session[:is_logged_in] == true
       puts session.id
@@ -22,7 +26,9 @@ class UsersController < ApplicationController
     end
   end
 
-
+  #  POST - /users/signup/ - sets up a new user
+  #                          bcrypts password
+  #  ------------------------------------------
   post '/signup/?' do
     # Creates a new user
     user = User.find_by username: params['username']
@@ -40,18 +46,16 @@ class UsersController < ApplicationController
     end
   end
 
-
-
-
+  #  GET - /users/logout/ - cancels active session
+  #  ---------------------------------------------
   get '/logout/?' do
     session =  nil
     puts "-----------"
     redirect '/'
   end
 
-
-
-
+  #  POST - /users/login/ - logs in registered user
+  #  ----------------------------------------------
   post '/login/?' do
     user = User.find_by username: params['username']
     if (params['username'] == '') || (params['password'] == '')
@@ -77,11 +81,10 @@ class UsersController < ApplicationController
     end
   end
 
-
-
+  #  GET - /users/ - render the home page
+  #  ------------------------------------
   get '/?' do
     erb :home
   end
-
 
 end

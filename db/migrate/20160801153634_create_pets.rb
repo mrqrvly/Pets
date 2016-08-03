@@ -1,3 +1,7 @@
+#  SCHEMA FOR PETS RECORD
+#  USERS WILL SAVE THESE FROM SEARCH RESULTS
+#  =========================================
+
 class CreatePets < ActiveRecord::Migration
   def change
     create_table :pets do |t|

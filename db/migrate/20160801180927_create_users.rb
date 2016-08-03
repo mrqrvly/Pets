@@ -1,3 +1,7 @@
+#  SCHEMA FOR USER RECORDS
+#  STORES INFO FOR REGISTERED USERS
+#  ================================
+
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
