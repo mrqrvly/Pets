@@ -1,23 +1,36 @@
 
 <div class="container">
-  <div class="row">
-
-    <div class="col-12 push-3">
-      <h2>Log In</h2>
-      <h3><%= @log_message %></h3>
+  <div class="row"  style="border: 1px solid red;">
+    <div class="col-12" >
       <form class="login" method="post" action="/login">
-          <input type="text" name="username" placeholder="Username" />
-          <br />
-          <input type="password" name="password" placeholder="Password" />
-          <br />
-          <button type="submit">Log in</button>
+        <h3><%= @log_message %></h3>
+        <input type="text" name="username" placeholder="Username" />
+        <input type="password" name="password" placeholder="Password" />
+        <button type="submit">Log in</button>
       </form>
-    </div>
+    </div>   
+  </div>
+</div>
 
-    <div class="col-6">
-      <h2>Sign Up</h2>
-      <h3><%= @sign_message %></h3>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="border: 2px solid black;">
+      <img src="../img/pug.jpg" style="margin-right: auto;" style="margin-left: auto;" />
+    </div>   
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      
       <form class="signup" method="post" action="/signup">
+          <h2>Sign Up</h2>
+          <h3><%= @sign_message %></h3>
           <input type="text" name="username" placeholder="Choose a Username" />
           <br />
           <input type="password" name="password" placeholder="Choose a Password" />
