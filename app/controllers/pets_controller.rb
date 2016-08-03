@@ -23,12 +23,6 @@ class PetsController < ApplicationController
     @animal = params[:animal]
     @breed  = params[:breed]
     @zip    = params[:zip]
-<<<<<<< HEAD
-    
-    def index
-
-=======
->>>>>>> master
     erb :results
   end
 
