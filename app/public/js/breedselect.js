@@ -5,14 +5,12 @@
 //  Grab the first select element and watch for change
 //  --------------------------------------------------
 $("#animal-select").change(function() {
-  console.log("Got the js file.")
   var $dropdown = $(this);
   console.log(this);
 
   //  Get the JSON file holding info that will populate second select element
   //  -----------------------------------------------------------------------
   $.getJSON("/json/breeds.json", function(data) {
-    console.log(data, 'huhghjjhgghjjhg');
     var key  = $dropdown.val();
     var vals = [];
     
@@ -20,28 +18,28 @@ $("#animal-select").change(function() {
     //  ---------------------------------------------------------------
     switch(key) {
       case "dog":
-        vals = data.dogs.split(",");
+        vals = data.dog.split(",");
         break;
       case "cat":
-        vals = data.cats.split(",");
+        vals = data.cat.split(",");
         break;
       case "rabbit":
-        vals = data.rabbits.split(",");
+        vals = data.rabbit.split(",");
         break;
       case "smallfurry":
-        vals = data.small.split(",");
+        vals = data.smallfurry.split(",");
         break;
       case "horse":
-        vals = data.horses.split(",");
+        vals = data.horse.split(",");
         break;
       case "bird":
-        vals = data.birds.split(",");
+        vals = data.bird.split(",");
         break;
       case "reptile":
-        vals = data.other.split(",");
+        vals = data.reptile.split(",");
         break;
       case "pig":
-        vals = data.pigs.split(",");
+        vals = data.pig.split(",");
         break;
       case "barnyard":
         vals = data.barnyard.split(",");
@@ -63,3 +61,5 @@ $("#animal-select").change(function() {
   });
 
 });
+
+
