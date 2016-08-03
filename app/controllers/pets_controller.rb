@@ -17,7 +17,6 @@ class PetsController < ApplicationController
     @zip    = params[:zip]
     
     def index
-      @pets
 
     erb :results
   end
