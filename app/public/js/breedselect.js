@@ -5,16 +5,17 @@
 //  Grab the first select element and watch for change
 //  --------------------------------------------------
 $("#animal-select").change(function() {
-  
+  console.log("Got the js file.")
   var $dropdown = $(this);
+  console.log(this);
 
   //  Get the JSON file holding info that will populate second select element
   //  -----------------------------------------------------------------------
   $.getJSON("/json/breeds.json", function(data) {
-
+    console.log(data, 'huhghjjhgghjjhg');
     var key  = $dropdown.val();
     var vals = [];
-
+    
     //  Selector for which data set will populate second select element
     //  ---------------------------------------------------------------
     switch(key) {
@@ -45,17 +46,16 @@ $("#animal-select").change(function() {
       case "barnyard":
         vals = data.barnyard.split(",");
         break;
-      // case "base":
-      //   vals = ["Please select an animal type"];
-      //   break;
       default:
         vals = ["Select a breed"];
+        break;
     }
 
     //  Grab the second select element, empty it, populate with each option from JSON data
     //  ----------------------------------------------------------------------------------
     var $breedSelect = $("#breed-select");
     $breedSelect.empty();
+
     $.each(vals, function(index, value) {
       $breedSelect.append("<option>" + value + "</option>");
     });
