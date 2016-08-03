@@ -1,5 +1,8 @@
+<!-- PAGE FOR RESULTS OF SEARCH / AJAX QUERY -->
+
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -17,24 +20,20 @@
   </head>
 
   <body>
-
     <div id="map"></div>
     <p>hi</p>
   
-
     <script>
       var animal = '<%= @animal %>';
       var breed  = '<%= @breed %>';
       var zip    = '<%= @zip %>';
     </script>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntNQvZ1AMlJwJDnwycxyLWJcJvZUmCfk&libraries=places&libraries=geometry"></script>
     <script src="/js/petapi.js"></script>
     <script src="/js/mapsearch.js"></script>
-
   </body>
+
 </html>
 
  
