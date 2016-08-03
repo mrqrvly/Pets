@@ -1,4 +1,6 @@
-   
+//  MAP SEARCH
+//  ==========   
+
 var center = { lat: 41.9013, lng: -87.6828 }
 var address = ['60613', '4252 N Clark St 60613', '60647', '60657']
       
