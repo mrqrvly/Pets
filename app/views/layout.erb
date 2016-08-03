@@ -5,13 +5,36 @@
 
 <head>
   <title>PETS</title>
-  
+   <!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8"> -->
+  <link href="https://fonts.googleapis.com/css?family=Harmattan" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
 
-  <%= yield %>
+<div class="container">
+  <div class="row">
+    <header class="col-12">
+      <div class="col-6">
+        <h1 id="logo"><a href="/?">WuvR</a></h1>
+      </div>
+      <div class="col-6">
+        <nav>
+          <ul>
+            <li><h4>About</h4></li>
+            <li><h4>Contact</h4></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </div>
+</div>  
+
+
+<%= yield %>
 
 
 </body>
