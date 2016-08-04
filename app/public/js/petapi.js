@@ -5,7 +5,7 @@
 //  the request.erb view (animal, breed, zip)
 //  -------------------------------------------
 var petCards = [];
-
+var myResult;
 $.ajax({
   url:'http://api.petfinder.com/pet.find',
   type: 'GET',
