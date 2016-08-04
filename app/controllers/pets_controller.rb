@@ -3,6 +3,7 @@
 
 require 'httparty'
 require 'json'
+require 'geocoder'
 
 class PetsController < ApplicationController
 
@@ -29,11 +30,16 @@ class PetsController < ApplicationController
     @zip    = params[:zip]
     puts "=============================================================="
     
-    result  = HTTParty.get("http://api.petfinder.com/pet.find?key=61635e39395ce71e4d0eba82c79adb55&location=#{@zip}&animal=#{@animal}&breed=#{@breed}&count=1&format=json").parsed_response
-    puts result["petfinder"]["pets"]["pet"]["name"]["$t"]
+
+    @zipCoord = Geocoder.coordinates(@zip)
+    @zipLat = @zipCoord[0]
+    @zipLng = @zipCoord[1]
+
+    # result  = HTTParty.get("http://api.petfinder.com/pet.find?key=61635e39395ce71e4d0eba82c79adb55&location=#{@zip}&animal=#{@animal}&breed=#{@breed}&count=1&format=json").parsed_response
+    # puts result["petfinder"]["pets"]["pet"]["name"]["$t"]
     
-    # @result = HTTParty.get("http://api.petfinder.com/pet.find?key=61635e39395ce71e4d0eba82c79adb55&location=#{@zip}&animal=#{@animal}&breed=#{@breed}&count=1&format=json").parsed_response
-    # thing = JSON.parse(result.body)
+    # # @result = HTTParty.get("http://api.petfinder.com/pet.find?key=61635e39395ce71e4d0eba82c79adb55&location=#{@zip}&animal=#{@animal}&breed=#{@breed}&count=1&format=json").parsed_response
+    # # thing = JSON.parse(result.body)
 
     erb :results
   end

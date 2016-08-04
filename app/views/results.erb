@@ -38,14 +38,62 @@
   </div>
 </div>
 
-    <script>
-      var animal = '<%= @animal %>';
-      var breed  = '<%= @breed %>';
-      var zip    = '<%= @zip %>';
-    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntNQvZ1AMlJwJDnwycxyLWJcJvZUmCfk&libraries=places&libraries=geometry"></script>
+  <script>
+  var animal = '<%= @animal %>';
+  var breed  = '<%= @breed %>';
+  var zip    = '<%= @zip %>';
+  var zipLat = '<%= @zipLat %>'; 
+  var zipLng = '<%= @zipLng %>'; 
+
+  var center = { lat: parseFloat(zipLat), lng: parseFloat(zipLng) }
+  console.log(zipLat)
+  console.log(zipLng)
+  console.log(center)  
+  var address = ['60613', '4252 N Clark St 60613', '60622', '91311']
+
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {zoom: 8});
+      var geocoder = new google.maps.Geocoder;
+      var service; 
+
+      function loopZip() {
+        for (var i = 0; i < address.length; i++) {
+          geocoder.geocode({'address': address[i]}, function(results, status) {
+          // console.log(results[0], 'this is reasults')
+          // console.log(results[0].geometry, 'this is results geometry')
+          // console.log(results[0].geometry.location.lat(), 'this is google maps geometry')
+          var input = new google.maps.LatLng(center.lat, center.lng)
+          var shelter = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng())
+      // console.log(google.maps.geometry.spherical.computeDistanceBetween(something, somethingElse), 'this is sphericalllllllllll')
+          console.log(google.maps.geometry.spherical.computeDistanceBetween(input, shelter), 'this is sphericalllllllllll')
+          var distance = google.maps.geometry.spherical.computeDistanceBetween(input, shelter) / 1609.34;
+          console.log(distance, 'dddddljaldsfkhalkdhfalsdkfh')
+            if (distance <= 5) {
+              if (status === 'OK') {
+              map.setCenter(center);
+              new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+              });
+            } else {
+              window.alert('Geocode was not successful for the following reason: ' +
+                  status);
+            }
+            }
+          
+          });
+        }   
+      }
+    loopZip();
+    }
+    initMap()
+      
+
+</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntNQvZ1AMlJwJDnwycxyLWJcJvZUmCfk&libraries=places&libraries=geometry"></script>
-    <script src="/js/mapsearch.js"></script>
+    
+   
     <!-- <script src="/js/petapi.js"></script> -->
     </body>
 
