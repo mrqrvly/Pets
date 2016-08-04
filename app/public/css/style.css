@@ -61,6 +61,9 @@ input[type=password] {
   z-index: 2;
   top: 87%;
 }
+.container {
+  padding: 0 20px;
+}
 .row {
   width: 100%;
   max-width: 1140px;
@@ -82,7 +85,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 100%;
-  margin-right: 3%;
 }
 .col-12:last-child {
   margin-right: 0;
@@ -92,7 +94,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 91.41666667%;
-  margin-right: 3%;
 }
 .col-11:last-child {
   margin-right: 0;
@@ -102,7 +103,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 82.83333333%;
-  margin-right: 3%;
 }
 .col-10:last-child {
   margin-right: 0;
@@ -112,7 +112,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 74.25%;
-  margin-right: 3%;
 }
 .col-9:last-child {
   margin-right: 0;
@@ -122,7 +121,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 65.66666667%;
-  margin-right: 3%;
 }
 .col-8:last-child {
   margin-right: 0;
@@ -132,7 +130,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 57.08333333%;
-  margin-right: 3%;
 }
 .col-7:last-child {
   margin-right: 0;
@@ -142,7 +139,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 48.5%;
-  margin-right: 3%;
 }
 .col-6:last-child {
   margin-right: 0;
@@ -152,7 +148,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 39.91666667%;
-  margin-right: 3%;
 }
 .col-5:last-child {
   margin-right: 0;
@@ -162,7 +157,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 31.33333333%;
-  margin-right: 3%;
 }
 .col-4:last-child {
   margin-right: 0;
@@ -172,7 +166,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 22.75%;
-  margin-right: 3%;
 }
 .col-3:last-child {
   margin-right: 0;
@@ -182,7 +175,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 14.16666667%;
-  margin-right: 3%;
 }
 .col-2:last-child {
   margin-right: 0;
@@ -192,7 +184,6 @@ input[type=password] {
   position: relative;
   float: left;
   width: 5.58333333%;
-  margin-right: 3%;
 }
 .col-1:last-child {
   margin-right: 0;
@@ -230,4 +221,8 @@ nav ul {
 }
 nav ul li {
   display: inline;
+}
+.pet-card {
+  float: left;
+  text-align: center;
 }

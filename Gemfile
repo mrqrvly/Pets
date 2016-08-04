@@ -12,9 +12,12 @@ gem 'bundler'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'bcrypt'
 gem 'json'
+gem 'httparty'
 gem 'pry'
 gem 'geocoder'
 
+#  Dev dependent gems
+#  ------------------
 group :development do
   gem 'rerun'
   gem 'sqlite3'
