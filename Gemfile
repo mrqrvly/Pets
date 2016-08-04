@@ -13,6 +13,7 @@ gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'bcrypt'
 gem 'json'
 gem 'pry'
+gem 'geocoder'
 
 group :development do
   gem 'rerun'

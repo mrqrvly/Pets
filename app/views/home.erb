@@ -1,6 +1,6 @@
 <!-- HOME PAGE ERB -->
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-12" >
       <form class="login" method="post" action="/login">
@@ -11,42 +11,40 @@
       </form>
     </div>   
   </div>
-</div>
+</div> -->
 
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-12" >
       <h2>Love is just a few clicks away</h2>
     </div>   
   </div>
-</div>
+</div> -->
 
 
-<div class="container">
-  <div class="row">
-    <div class="col-8 push-2" style="text-align:center;">
-      <img src="../img/kittysleep.jpg" />
-    </div>   
+<div class="container" >
+  <div class="col-12 banner" >
+
+
+      <div class="col-12 sign">
+        <form class="signup" method="post" action="/signup">
+            <h2>Sign Up</h2>
+            <!-- <h3><%= @sign_message %></h3> -->
+            <input type="text" name="username" placeholder="Choose a Username" />
+            <input type="password" name="password" placeholder="Choose a Password" />
+         
+            <input type="text" name="firstname" placeholder="Enter your first name" />
+            <input type="text" name="lastname" placeholder="Enter your last name" />
+  
+            <button type="submit">Sign Up</button>
+        </form>
+      </div>
+   
+
   </div>
 </div>
 
 
 
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <form class="signup" method="post" action="/signup">
-          <h2>Sign Up</h2>
-          <h3><%= @sign_message %></h3>
-          <input type="text" name="username" placeholder="Choose a Username" />
-          <input type="password" name="password" placeholder="Choose a Password" />
-          <br />
-          <input type="password" name="firstname" placeholder="Enter your first name" />
-          <input type="password" name="lastname" placeholder="Enter your last name" />
-          <br />
-          <button type="submit">Sign Up</button>
-      </form>
-    </div>
-  </div>
-</div>
+
