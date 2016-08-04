@@ -1,6 +1,9 @@
 #  PETS CONTROLLER
 #  ===============
 
+require 'httparty'
+require 'json'
+
 class PetsController < ApplicationController
 
   #  GET - /pets/petprofile/ - Allows access to a single result of Ajax request
@@ -20,9 +23,18 @@ class PetsController < ApplicationController
   #                  sets params for us in Ajax request
   #  ---------------------------------------------------
   post '/?' do
+    
     @animal = params[:animal]
     @breed  = params[:breed]
     @zip    = params[:zip]
+    puts "=============================================================="
+    puts @animal
+    puts @breed
+    puts @zip
+
+    result = HTTParty.get("http://api.petfinder.com/pet.find?key=61635e39395ce71e4d0eba82c79adb55&location=#{@zip}&animal=#{@animal}&breed=#{@breed}&count=1&format=json")
+    @result = JSON.parse(result.body).to_json
+
     erb :results
   end
 
