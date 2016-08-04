@@ -14,6 +14,7 @@ gem 'bcrypt'
 gem 'json'
 gem 'httparty'
 gem 'pry'
+gem 'geocoder'
 
 #  Dev dependent gems
 #  ------------------

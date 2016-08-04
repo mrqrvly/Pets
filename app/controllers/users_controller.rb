@@ -42,6 +42,8 @@ class UsersController < ApplicationController
     else
       password = BCrypt::Password.create(params['password'])
       user = User.create username: params['username'], password: password, firstname: params['firstname'], lastname: params['lastname']
+      session[:is_logged_in] = true
+      session[:user_id] = user.id
       redirect '/profile'
     end
   end
