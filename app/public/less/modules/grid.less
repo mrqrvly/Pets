@@ -31,7 +31,7 @@
     position: relative;
     float: left;
     width: @width;
-    // margin-right: @gutter;
+    margin-right: @gutter;
 
     &:last-child {
       margin-right: 0;
@@ -63,48 +63,52 @@
 
 .login {
   text-align: right;
+  padding-top: 50px;
   padding-right: 20px;
-  padding-bottom: 10px;
-
-  // border: 1px solid green;
-
 }
 
 
-// .login input {
-//   margin-top: 1px;
-//   margin-right: 5px;
-//   height: 15px;
-//   width: 100px;
-// }
+.login input {
+  border-radius: 10px;
+  outline: none;
+  text-align: center;
+}
 
 .signup {
-  text-align: center;
-  background: rgba(20, 0, 255, .6);
+  display: inline;
 }
-// .signup input {
-//   height: 15px;
-//   width: 200px;
-//   margin-right: 5px;
-//   float: left;
-// }
+
+.signup input {
+  border-radius: 10px;
+  outline: none;
+  width: 150px;
+  height: 15px;
+  margin-right: 10px;
+  box-shadow: none;
+  text-align: center;
+}
+
 nav {
   text-align: right;
   padding-right: 30px;
 }
+
 nav ul {
   list-style: none;
+
+  li {
+  text-decoration: none;
+  }
+
 }
 
-nav ul li {
-  display: inline;
-}
+
 
 .pet-card {
   float:         left;
   margin:        auto;
   text-align:    left;
-  border:        2px solid grey;
+  border:        2px solid darkgrey;
   border-radius: 3px;
   padding:       2px;
   overflow-y:    scroll;
@@ -147,3 +151,14 @@ nav ul li {
     // }
   }
 }
+
+.form {
+ padding-right: 200px;
+ padding-top: 20px;
+ box-sizing: border-box;
+}
+
+#map {
+      height: 500px;
+    }
+

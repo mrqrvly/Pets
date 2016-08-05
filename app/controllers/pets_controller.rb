@@ -38,6 +38,11 @@ class PetsController < ApplicationController
   #                  sets params for us in Ajax request
   #  ---------------------------------------------------
   post '/?' do
+    puts 'this is the sesssion.id'
+    puts session.id
+    puts 'user id'
+    puts session[:user_id]
+
     
     puts "=================================="
     puts session.id
@@ -52,8 +57,10 @@ class PetsController < ApplicationController
     @zipLat = @zipCoord[0]
     @zipLng = @zipCoord[1]
 
-    result  = HTTParty.get("http://api.petfinder.com/pet.find?key=61635e39395ce71e4d0eba82c79adb55&location=#{@zip}&animal=#{@animal}&breed=#{@breed}&count=21&format=json").parsed_response
-
+  
+    result  = HTTParty.get("http://api.petfinder.com/pet.find?key=61635e39395ce71e4d0eba82c79adb55&location=#{@zip}&animal=#{@animal}&breed=#{@breed}&count=9&format=json").parsed_response
+    
+    
     @petArray = []
     for animal in result["petfinder"]["pets"]["pet"] do
       pet = {"name"        =>animal["name"]["$t"],
@@ -77,6 +84,7 @@ class PetsController < ApplicationController
     #   pet[:picsmall] = "No Photo"
     # end
 
+
     # if animal["media"]["photos"]["photo"][2]["$t"]
     #   pet[:piclarge] = animal["media"]["photos"]["photo"][2]["$t"]
     # else
@@ -85,6 +93,26 @@ class PetsController < ApplicationController
       @petArray.push(pet)
     
     end
+  
+
+
+    @addressArray = []
+    @nameArray = []
+    @metaArray = [@nameArray, @addressArray]
+    puts @metaArray
+
+    @petArray.each do |i|
+      address = i["address"]
+      city = i["city"]
+      state = i["state"]
+      zip = i["zip"]
+      name = i["name"]
+      
+      @nameArray.push("#{name}")
+      @addressArray.push("#{address} #{city} #{state} #{zip}")
+    end
+   
+
 
     erb :results
   end

@@ -4,35 +4,49 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Region code biasing (US)</title>
-    
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Region code biasing (US)</title>
+  
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
 
-      #map {
-        height: 500px;
-      }
-    </style>
-  </head>
+    #map {
+      height: 400px;
+    }
+  </style>
+</head>
 
-  <body>
+<body>
     
-    <div class="container">
-      <div class="row">
-        <div class="col-8 push-2">
-          <div id="map">
-            
-          </div>
-        </div>
+  <div class="container">
+    <header class="col-8">
+      <h1 id="logo"><a href="/?">WuvR</a></h1>
+    </header>
+
+    <div class="col-4">
+      <nav>
+        <ul>
+          <li class="nav"><a href="/profile"><h4>My Profile</h4></a></li>
+          <li class="nav"><a href="/logout"><h4>Log Out</h4></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-8 push-2">
+        <div id="map"></div>
       </div>
     </div>
+  </div>
 
     
 
@@ -40,8 +54,7 @@
  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntNQvZ1AMlJwJDnwycxyLWJcJvZUmCfk&libraries=places&libraries=geometry"></script>
-    <script src="/js/petapi.js"></script>
     <script src="/js/mapsearch.js"></script>
-  </body>
+</body>
 
 </html>

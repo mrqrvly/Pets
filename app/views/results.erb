@@ -3,23 +3,38 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Region code biasing (US)</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 500px;
-      }
-    </style>
-  </head>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Region code biasing (US)</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      height: 400px;
+    }
+  </style>
+</head>
 
-  <body>
+<body>
+
+<div class="container">
+  <header class="col-8">
+    <h1 id="logo"><a href="/?">WuvR</a></h1>
+  </header>
+
+  <div class="col-4">
+    <nav>
+      <ul>
+        <li class="nav"><a href="/profile"><h4>My Profile</h4></a></li>
+        <li class="nav"><a href="/logout"><h4>Log Out</h4></a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">
@@ -30,43 +45,120 @@
 
   <div class="row">
     <div class="pet-card-holder col-12">
+    
+      <% @petArray.each do |pet| %>
+        
+        <div class="pet-card col-4">
+          <div class="card-divider">
+            <img class="pet-img card-data" src=<%= pet["picsmall"] %> />
 
-    <% @petArray.each do |pet| %>
-      
-      <div class="pet-card col-4">
-        <div class="card-divider">
-          <img class="pet-img card-data" src=<%= pet["picsmall"] %> />
+            <ul class="card-list card-data">
+              <li class="pet-name"><strong><em><%= pet["name"] %></em> </strong></li>
+              <li><%= pet["breed"] %></li>
+              <li><%= pet["email"] %></li>
+              <li><%= pet["city"] %>, <%= pet["state"] %></li>
+            </ul>
+          </div>
 
-          <ul class="card-list card-data">
-            <li class="pet-name"><strong><em><%= pet["name"] %></em> </strong></li>
-            <li><%= pet["breed"] %></li>
-            <li><%= pet["email"] %></li>
-            <li><%= pet["city"] %>, <%= pet["state"] %></li>
-          </ul>
+          <div class="card-divider">
+            <form action="/pets/petsave" method="post">
+              <input type="hidden" name="petdata" value=<%= pet["petid"] %> />
+              <button type="submit">Save</button>
+            </form>
+
+          </div>
         </div>
 
-        <div class="card-divider">
-          <form action="/pets/petsave" method="post">
-            <input type="hidden" name="petdata" value=<%= pet["petid"] %> />
-            <button type="submit">Save</button>
-          </form>
-        </div>
-      </div>
-
-    <% end %>
+      <% end %>
 
     </div>
   </div>
 </div>
 
-    <script>
-      var animal = '<%= @animal %>';
-      var breed  = '<%= @breed %>';
-      var zip    = '<%= @zip %>';
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntNQvZ1AMlJwJDnwycxyLWJcJvZUmCfk&libraries=places&libraries=geometry"></script>
-    <script src="/js/mapsearch.js"></script>
-    </body>
 
+
+
+
+
+
+
+
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntNQvZ1AMlJwJDnwycxyLWJcJvZUmCfk&libraries=places&libraries=geometry"></script>
+  <script>
+  var animal = '<%= @animal %>';
+  var breed  = '<%= @breed %>';
+  var zip    = '<%= @zip %>';
+  var zipLat = '<%= @zipLat %>'; 
+  var zipLng = '<%= @zipLng %>';
+  var meta = <%= @metaArray %>;
+  var name = <%= [@metaArray[0]] %>;
+  var address  = <%= @metaArray[1] %>;
+  console.log(meta)
+  // console.log(meta[0])
+  // console.log(meta[1])
+  // console.log(address)
+  // console.log(name)
+  // console.log(address)
+  var center = { lat: parseFloat(zipLat), lng: parseFloat(zipLng) }
+  // console.log(zipLat)
+  // console.log(zipLng)
+  // console.log(center)  
+  // var address = ["10000 W O'Hare Ave, Chicago, IL 60666"]
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {zoom: 8});
+      var geocoder = new google.maps.Geocoder;
+   
+
+      function loopZip() {
+        for (var i = 0; i < address.length; i++) {
+          geocoder.geocode({'address': address[i]}, function(results, status) {
+            // console.log(results[0])
+          // console.log(results[0], 'this is results')
+          // console.log(results[0].geometry, 'this is results geometry')
+          // console.log(results[0].geometry.location.lat(), 'this is google maps geometry')
+    
+          var input = new google.maps.LatLng(center.lat, center.lng)
+          var shelter = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng())
+     
+          // console.log(shelter.lat(),shelter.lng())
+
+          // console.log(input)
+      // console.log(google.maps.geometry.spherical.computeDistanceBetween(something, somethingElse), 'this is sphericalllllllllll')
+          // console.log(google.maps.geometry.spherical.computeDistanceBetween(input, shelter), 'this is spherical')
+          var distance = google.maps.geometry.spherical.computeDistanceBetween(input, shelter) / 1609.34;
+          // console.log(distance, 'this is distance')
+            if (distance <= 20) {
+              if (status === 'OK') {
+                map.setCenter(center);
+
+                for (var i = 0; i < meta[0].length; i++) { 
+
+                  var petName = meta[0][i]
+                  console.log(petName)
+                  var infowindow = new google.maps.InfoWindow({content: petName});
+                  var marker = new google.maps.Marker({ map: map, position: results[0].geometry.location });
+                  google.maps.event.addListener(marker, 'click', function() { infowindow.open(map,marker) });
+                }
+                
+
+
+            } else {
+              window.alert('Geocode was not successful for the following reason: ' +
+                  status);
+            }
+            }
+          
+          });
+        }   
+      }
+    loopZip();
+    }
+    initMap()
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script> 
+    </body>
 </html>
