@@ -53,13 +53,12 @@ class PetsController < ApplicationController
              "zip"=>pet["contact"]["zip"]["$t"]
             }
 
-      @petArray.push(pet).to_json
+      @petArray.push(pet)
 
 
       puts "=============================================================="
     end
-    puts @petArray.push(pet).to_json
-    # puts petArray[i]["name"]
+  
 
 
     @addressArray = []
@@ -76,13 +75,7 @@ class PetsController < ApplicationController
       @nameArray.push("#{name}")
 
       @addressArray.push("#{address} #{city} #{state} #{zip}")
-
-
-
     end
-
-     
-     # puts @metaArray
 
     erb :results
   end
