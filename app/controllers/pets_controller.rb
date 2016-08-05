@@ -3,10 +3,9 @@
 
 require 'httparty'
 require 'json'
+require 'geocoder'
 
 class PetsController < ApplicationController
-
-  
 
   #  POST - /pets/petprofile/ - Allows access to a single result of Ajax request
   #  -------------------------------------------------------------------------
@@ -17,10 +16,7 @@ class PetsController < ApplicationController
     
     erb :pet
 
-
   end
-
-  
 
   #  POST - /pets/ - Renders Ajax search results and map
   #                  sets params for us in Ajax request
@@ -31,10 +27,13 @@ class PetsController < ApplicationController
     @breed  = params[:breed]
     @zip    = params[:zip]
     
-    result  = HTTParty.get("http://api.petfinder.com/pet.find?key=61635e39395ce71e4d0eba82c79adb55&location=#{@zip}&animal=#{@animal}&breed=#{@breed}&count=21&format=json").parsed_response
-    
-    @petArray = []
+    @zipCoord = Geocoder.coordinates(@zip)
+    @zipLat = @zipCoord[0]
+    @zipLng = @zipCoord[1]
 
+    result  = HTTParty.get("http://api.petfinder.com/pet.find?key=61635e39395ce71e4d0eba82c79adb55&location=#{@zip}&animal=#{@animal}&breed=#{@breed}&count=21&format=json").parsed_response
+
+    @petArray = []
     for animal in result["petfinder"]["pets"]["pet"] do
       pet = {"name"        =>animal["name"]["$t"],
              "animal"      =>animal["animal"]["$t"],
@@ -64,8 +63,6 @@ class PetsController < ApplicationController
     # end
       @petArray.push(pet)
     
-      puts "================"
-      puts pet
     end
 
     erb :results
