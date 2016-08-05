@@ -16,6 +16,7 @@ function initMap() {
     for (var i = 0; i < address.length; i++) {
       geocoder.geocode({'address': address[i]}, function(results, status) {
       // console.log(results[0], 'this is reasults')
+      console.log(results[0], 'this is results')
       // console.log(results[0].geometry, 'this is results geometry')
       // console.log(results[0].geometry.location.lat(), 'this is google maps geometry')
       var input = new google.maps.LatLng(center.lat, center.lng)

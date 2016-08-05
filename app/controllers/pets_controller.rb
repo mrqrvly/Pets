@@ -36,7 +36,7 @@ class PetsController < ApplicationController
    
     result  = HTTParty.get("http://api.petfinder.com/pet.find?key=61635e39395ce71e4d0eba82c79adb55&location=#{@zip}&animal=#{@animal}&breed=#{@breed}&count=9&format=json").parsed_response
     
-    petArray = []
+    @petArray = []
 
     for pet in result["petfinder"]["pets"]["pet"] do
       puts "=============================================================="
@@ -53,12 +53,36 @@ class PetsController < ApplicationController
              "zip"=>pet["contact"]["zip"]["$t"]
             }
 
-      petArray.push(pet)
+      @petArray.push(pet).to_json
+
 
       puts "=============================================================="
     end
+    puts @petArray.push(pet).to_json
+    # puts petArray[i]["name"]
 
-    puts petArray[0]["name"]
+
+    @addressArray = []
+    @nameArray = []
+    @metaArray = []
+
+    @petArray.each do |i|
+      address = i["address"]
+      city = i["city"]
+      state = i["state"]
+      zip = i["zip"]
+      name = i["name"]
+      
+      @nameArray.push("#{name}")
+
+      @addressArray.push("#{address} #{city} #{state} #{zip}")
+
+
+
+    end
+
+     
+     # puts @metaArray
 
     erb :results
   end

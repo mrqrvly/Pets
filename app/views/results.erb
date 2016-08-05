@@ -20,6 +20,16 @@
   </head>
 
   <body>
+<div class-="container">
+  <div class="col-4">
+    <nav>
+        <ul>
+          <li><h4>My Profile</h4></li>
+          <li><h4>Search</h4></li>
+        </ul>
+      </nav>
+    </div> 
+</div>
 
 <div class="container">
   <div class="row">
@@ -44,38 +54,72 @@
   var breed  = '<%= @breed %>';
   var zip    = '<%= @zip %>';
   var zipLat = '<%= @zipLat %>'; 
-  var zipLng = '<%= @zipLng %>'; 
-
+  var zipLng = '<%= @zipLng %>';
+  var meta = <%= @metaArray %>;
+  var name = <%= [@metaArray[0]] %>;
+  var address  = <%= @metaArray[1] %>;
+  // console.log(meta)
+  // console.log(meta[0])
+  // console.log(meta[1])
+  // console.log(address)
+  // console.log(name)
+  // console.log(address)
   var center = { lat: parseFloat(zipLat), lng: parseFloat(zipLng) }
-  console.log(zipLat)
-  console.log(zipLng)
-  console.log(center)  
-  var address = ['60613', '4252 N Clark St 60613', '60622', '91311']
-
+  // console.log(zipLat)
+  // console.log(zipLng)
+  // console.log(center)  
+  // var address = ["10000 W O'Hare Ave, Chicago, IL 60666"]
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {zoom: 8});
       var geocoder = new google.maps.Geocoder;
-      var service; 
+   
 
       function loopZip() {
         for (var i = 0; i < address.length; i++) {
           geocoder.geocode({'address': address[i]}, function(results, status) {
-          // console.log(results[0], 'this is reasults')
+            // console.log(results[0])
+          // console.log(results[0], 'this is results')
           // console.log(results[0].geometry, 'this is results geometry')
           // console.log(results[0].geometry.location.lat(), 'this is google maps geometry')
+    
           var input = new google.maps.LatLng(center.lat, center.lng)
           var shelter = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng())
+     
+          // console.log(shelter.lat(),shelter.lng())
+
+          // console.log(input)
       // console.log(google.maps.geometry.spherical.computeDistanceBetween(something, somethingElse), 'this is sphericalllllllllll')
-          console.log(google.maps.geometry.spherical.computeDistanceBetween(input, shelter), 'this is sphericalllllllllll')
+          // console.log(google.maps.geometry.spherical.computeDistanceBetween(input, shelter), 'this is spherical')
           var distance = google.maps.geometry.spherical.computeDistanceBetween(input, shelter) / 1609.34;
-          console.log(distance, 'dddddljaldsfkhalkdhfalsdkfh')
-            if (distance <= 5) {
+          // console.log(distance, 'this is distance')
+            if (distance <= 20) {
               if (status === 'OK') {
-              map.setCenter(center);
-              new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-              });
+                map.setCenter(center);
+
+                for (var i = 0; i < meta[0].length; i++) { 
+                  console.log(meta[0])
+
+                  var petName = meta[0][i]
+                  console.log(petName)
+                  var infowindow = new google.maps.InfoWindow({content: petName});
+                  var marker = new google.maps.Marker({ map: map, position: results[0].geometry.location });
+                  google.maps.event.addListener(marker, 'click', function() { infowindow.open(map,marker) });
+                }
+                
+
+
+  // var marker = new google.maps.Marker({
+  //   position: uluru,
+  //   map: map,
+  //   title: 'Uluru (Ayers Rock)'
+  // });
+  // marker.addListener('click', function() {
+  //   infowindow.open(map, marker);
+  // });
+
+
+
+
             } else {
               window.alert('Geocode was not successful for the following reason: ' +
                   status);

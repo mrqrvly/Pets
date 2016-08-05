@@ -16,14 +16,28 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12" >
+    <div class="col-12 love">
+      <div class="col-8">
       <h2>Love is just a few clicks away</h2>
-    </div>   
+      </div>
+    <div class="col-4">
+      <form class="login" method="post" action="/login">
+        <h3><%= @log_message %></h3>
+        <input type="text" name="username" placeholder="Username" />
+        <input type="password" name="password" placeholder="Password" />
+        <button type="submit">Log in</button>
+      </form>
+    </div> 
+    </div> 
+    
   </div>
 </div>
 
 <div class="container" >
   <div class="col-12 banner" >
+  
+
+
       <div class="col-12 sign">
         <form class="signup" method="post" action="/signup">
             <h2>Sign Up</h2>
