@@ -1,54 +1,46 @@
 <!-- HOME PAGE ERB -->
 
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-12" >
-      <form class="login" method="post" action="/login">
-        <h3><%= @log_message %></h3>
-        <input type="text" name="username" placeholder="Username" />
-        <input type="password" name="password" placeholder="Password" />
-        <button type="submit">Log in</button>
-      </form>
-    </div>   
-  </div>
-</div> -->
+<div class="container">
+  <header class="col-6">
+    <h1 id="logo"><a href="/?">WuvR</a></h1>
+  </header>
+  <div class="col-6">
+  <form class="login" method="post" action="/login">
+    <h4><%= @log_message %></h4>
+    <input type="text" name="username" placeholder="Username" />
+    <input type="password" name="password" placeholder="Password" />
+    <button type="submit">Log in</button>
+  </form>
+ </div> 
+</div>
 
 
 <div class="container">
   <div class="row">
-    <div class="col-12 love">
-      <div class="col-8">
+    <div class="col-12">
       <h2>Love is just a few clicks away</h2>
-      </div>
-    <div class="col-4">
-      <form class="login" method="post" action="/login">
-        <h3><%= @log_message %></h3>
-        <input type="text" name="username" placeholder="Username" />
-        <input type="password" name="password" placeholder="Password" />
-        <button type="submit">Log in</button>
-      </form>
     </div> 
-    </div> 
-    
+  </div>    
   </div>
-</div>
 
 <div class="container" >
   <div class="col-12 banner" >
-  
-
-
-      <div class="col-12 sign">
-        <form class="signup" method="post" action="/signup">
-            <h2>Sign Up</h2>
-            <!-- <h3><%= @sign_message %></h3> -->
-            <input type="text" name="username" placeholder="Choose a Username" />
-            <input type="password" name="password" placeholder="Choose a Password" />
-            <input type="text" name="firstname" placeholder="Enter your first name" />
-            <input type="text" name="lastname" placeholder="Enter your last name" />
-            <button type="submit">Sign Up</button>
-        </form>
-      </div>
+    
+    <div class="col-12 sign">
+      <form class="signup" method="post" action="/signup">
+        <div class="col-3 signH"> 
+          <h3 id="signh2">Sign Up!</h3>
+        </div>
+        <div class="col-9 form" > 
+          <input type="text" name="username" placeholder="Choose a Username" />
+          <input type="password" name="password" placeholder="Choose a Password" />
+          <input type="text" name="firstname" placeholder="Enter your first name" />
+          <input type="text" name="lastname" placeholder="Enter your last name" />
+          <button type="submit">Sign Up</button>
+          <h3><%= @sign_message %></h3>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

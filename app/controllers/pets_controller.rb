@@ -22,6 +22,11 @@ class PetsController < ApplicationController
   #                  sets params for us in Ajax request
   #  ---------------------------------------------------
   post '/?' do
+    puts 'this is the sesssion.id'
+    puts session.id
+    puts 'user id'
+    puts session[:user_id]
+
     
     @animal = params[:animal]
     @breed  = params[:breed]
