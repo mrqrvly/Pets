@@ -62,9 +62,10 @@
 
           <div class="card-divider">
             <form action="/pets/petsave" method="post">
-              <input type="hidden" name="petdata" value=<%= pet["name"] %> />
+              <input type="hidden" name="petdata" value=<%= pet["petid"] %> />
               <button type="submit">Save</button>
             </form>
+
           </div>
         </div>
 

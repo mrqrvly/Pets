@@ -18,12 +18,17 @@ class UsersController < ApplicationController
   #  GET - /users/profile/ - goes to profile page if logged in
   #  ---------------------------------------------------------
   get '/profile/?' do
-    if session[:is_logged_in] == true
-      puts session.id
+    # if session[:is_logged_in] == true
+    #   puts session.id
+      
+
+      user = User.find(session[:user_id])
+      puts user
+
       erb :user
-    else
-      redirect '/'
-    end
+    # else
+    #   redirect '/'
+    # end
   end
 
   #  POST - /users/signup/ - sets up a new user
