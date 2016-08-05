@@ -25,10 +25,8 @@ class UsersController < ApplicationController
       user = User.find(session[:user_id])
       puts '-------------------------------------------'
       puts user
-      binding.pry
       erb :user
     # else
-    User.pet.find 
     #   redirect '/'
     # end
   end
