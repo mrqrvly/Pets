@@ -30,23 +30,53 @@
 
   <div class="row">
     <div class="pet-card-holder col-12">
-      <%= @animal %>
-      <%= @breed %>
-      <%= @zip %>
-      <%= @result %>
+
+    <% @petArray.each do |pet| %>
+      
+      <div class="pet-card col-4">
+        <div class="card-divider">
+          <img class="pet-img card-data" src=<%= pet["picsmall"] %> />
+
+          <ul class="card-list card-data">
+            <li class="pet-name"><strong><em><%= pet["name"] %></em> </strong></li>
+            <li><%= pet["breed"] %></li>
+            <li><%= pet["email"] %></li>
+            <li><%= pet["city"] %>, <%= pet["state"] %></li>
+          </ul>
+        </div>
+
+        <div class="card-divider">
+          <form action="/pets/petsave" method="post">
+            <input type="hidden" name="petdata" value=<%= pet["name"] %> />
+            <button type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+
+    <% end %>
+
+
+
+
+
+
+
+
+
+
+
     </div>
   </div>
 </div>
 
     <script>
       var animal = '<%= @animal %>';
-      var breed  = '<%= @breed %>';
+      // var breed  = '<%= @breed %>';
       var zip    = '<%= @zip %>';
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntNQvZ1AMlJwJDnwycxyLWJcJvZUmCfk&libraries=places&libraries=geometry"></script>
     <script src="/js/mapsearch.js"></script>
-    <!-- <script src="/js/petapi.js"></script> -->
     </body>
 
 </html>
