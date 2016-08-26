@@ -28,7 +28,7 @@ class PetsController < ApplicationController
            petid:       pet["id"]["$t"]
           }
 
-    pet = Pet.create name: pet[:name], address: pet[:address], phone: pet[:phone], website: pet[:email], userid: session[:user_id]
+    pet = Pet.create name: pet[:name], type: pet[:type], address: pet[:address], phone: pet[:phone], email: pet[:email], description: pet[:description], photo: pet[:picsmall], userid: session[:user_id]
 
     redirect '/profile/'
   
