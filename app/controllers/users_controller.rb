@@ -21,10 +21,17 @@ class UsersController < ApplicationController
     # if session[:is_logged_in] == true
     #   puts session.id
       
-
       user = User.find(session[:user_id])
-      puts '-------------------------------------------'
-      puts user
+
+      @favorites = Pet.where(userid: session[:user_id]).to_json
+
+      puts '**********************'
+      puts session.id
+      puts user.id
+      puts session[:user_id]
+      puts @favorites
+      puts '**********************'
+
       erb :user
     # else
     #   redirect '/'
@@ -57,7 +64,6 @@ class UsersController < ApplicationController
   #  ---------------------------------------------
   get '/logout/?' do
     session =  nil
-    puts "-----------"
     redirect '/'
   end
 
@@ -76,10 +82,6 @@ class UsersController < ApplicationController
       if password == params['password'] 
         session[:is_logged_in] = true
         session[:user_id] = user.id
-        puts ' ------------------------- '
-        puts session.id
-        puts ' ------------------------- '
-        puts session[:user_id]
         redirect '/profile'
       else
         @log_message = "Incorrect password"
